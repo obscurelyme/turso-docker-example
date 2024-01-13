@@ -1,0 +1,4 @@
+node_modules
+*.db
+client_wal_index
+.env
