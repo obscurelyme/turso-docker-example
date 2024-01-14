@@ -45,3 +45,15 @@ docker-compose up -d
 ```sh
 docker-compose down -v
 ```
+
+#### Development docker compose
+
+```sh
+docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml up -d --build
+```
+
+#### Production docker compose
+
+```sh
+docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d --build
+```
