@@ -2,7 +2,6 @@ import express from 'express';
 import pinoHttp from 'pino-http';
 import { createClient } from '@libsql/client';
 import { randomUUID as uuid } from 'node:crypto';
-import 'dotenv/config';
 
 const logger = pinoHttp({
   transport: {
@@ -37,7 +36,8 @@ app.use(logger);
 
 app.get('/', (_, res) => {
   res.json({
-    success: true
+    success: true,
+    text: 'Hello, World!'
   })
 });
 

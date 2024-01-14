@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  turso-test-api:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    env_file:
+      - .env
+    container_name: turso-api
+    image: turso-api-img
