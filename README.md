@@ -15,3 +15,9 @@ to run the image CONTAINER_NAME is whatever you want to call the container and I
 ```sh
 docker run -d -p 3000:3000 --name [CONTAINER_NAME] [IMAGE_NAME]
 ```
+
+To run the image with a bind mount
+
+```sh
+docker run -d -p 3000:3000 -v /"$(pwd)":/app --name [CONTAINER_NAME] [IMAGE_NAME]
+```

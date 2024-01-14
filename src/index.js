@@ -1,6 +1,17 @@
 import express from 'express';
+import pinoHttp from 'pino-http';
 import { createClient } from '@libsql/client';
+import { randomUUID as uuid } from 'node:crypto';
 import 'dotenv/config';
+
+const logger = pinoHttp({
+  transport: {
+    target: 'pino-pretty',
+    options: {
+      colorize: true
+    }
+  },
+});
 
 const PORT = process.env.PORT || 3000;
 
@@ -22,10 +33,29 @@ async function getUsers() {
 
 const app = express();
 
+app.use(logger);
+
 app.get('/', (_, res) => {
   res.json({
     success: true
   })
+});
+
+app.get('/scores', (_, res) => {
+  res.json([
+    {
+      id: uuid(),
+      score: 100
+    },
+    {
+      id: uuid(),
+      score: 200
+    },
+    {
+      id: uuid(),
+      score: 300
+    }
+  ])
 });
 
 app.get('/users', async (_, res) => {
